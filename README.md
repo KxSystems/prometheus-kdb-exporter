@@ -6,7 +6,7 @@ This interface provides a method by which to expose metrics from a kdb+ process 
 
 Prometheus is an open source monitoring solution which facilitates metrics gathering, querying and alerting for a wealth of different 3rd party languages and applications. It also provides integration with Kubernetes for automatic discovery of supported applications.
 
-Visualization and querying can be done through its built in expression browser, or more commonly via Grafana. This is outli
+Visualization and querying can be done through the Prometheus built in expression browser, or more commonly via Grafana. This is outlined in an example below.
 
 ### Aims
 
@@ -21,13 +21,12 @@ Visualization and querying can be done through its built in expression browser, 
 
 ### Example Use Cases
 
-Some example use cases which could be generated from queries/alerts using the Prometheus framework
+The following are some potential use cases for the interface, this is by no means an exhaustive list. 
 
 - Effects from version upgrades (e.g. performance before/after changes)
 - Alerts when your license may be due to expire
 - Bad use of symbol types within an instance
 - Instances upon which garbage collection may be beneficial on long running processes
-- etc
 
 ## New to kdb+ ?
 
@@ -36,7 +35,7 @@ To access the free editions of kdb+, please visit https://code.kx.com/q/learn/ f
 
 ## Quick Start
 
-Run kdb+ with the supplied q script. For example, the following will expose metrics on port 8080 which can be monitored by Prometheus
+Run kdb+ with the supplied q script. This script will expose metrics on port 8080 which can be monitored by Prometheus
 
 ```
 q exporter.q -p 8080
@@ -89,7 +88,7 @@ Run the following when the environment is to be stopped
 docker-compose -f docker-compose-linux.yml down
 ```
 
-### Example resource Utilisation
+### Example resource Utilization
 
 Provided with the interface is the script `kdb_user_example.q`. This can be used to show an example of resources being consumed and monitored using Prometheus. The script will connect to the q session running on port 8080 as outlined about and attempt to use resources in a number of ways
 
