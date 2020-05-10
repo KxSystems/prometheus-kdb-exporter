@@ -47,7 +47,7 @@ docker-compose -f docker-compose-linux.yml down
 
 ## Example resource Utilization
 
-Provided with the interface is the script `kdb_user_example.q`. This can be used to show an example of resources being consumed and monitored using Prometheus. The script will connect to the q session running on port 8080 as outlined about and attempt to use resources in a number of ways
+Provided with the interface is the script `kdb_user_example.q`. This can be used to show an example of resources being consumed and monitored using Prometheus. The script will connect to the q session running on port 8080 as outlined above and attempt to use resources in a number of ways
 
 ```
 q kdb_user_example.q
