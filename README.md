@@ -2,36 +2,21 @@
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/kxsystems/prometheus-kdb-exporter)](https://github.com/kxsystems/prometheus-kdb-exporter/releases)
 
-This interface provides a method by which to expose metrics from a kdb+ process or multiple processes to Prometheus for monitoring. This interface is part of the [_Fusion for kdb+_](https://code.kx.com/v2/interfaces/fusion/) project.
+## Introduction
 
-Prometheus is an open source monitoring solution which facilitates metrics gathering, querying and alerting for a wealth of different 3rd party languages and applications. It also provides integration with Kubernetes for automatic discovery of supported applications.
+This interface provides a method by which to expose metrics from a kdb+ process or multiple processes to Prometheus for monitoring. This is done via the script `exporter.q` which exposes kdb+ process metrics which can be consumed by Prometheus.
 
-Visualization and querying can be done through the Prometheus built in expression browser, or more commonly via Grafana. This is outlined in an example below.
-
-### Aims
-
-1. To provide a script that provides useful general metrics that can be extended if required
-2. Allow correlation between different instances, metrics, exporters and installs to be easily identified
-
-### What this isn't
-
-1. This interface does not provide service discovery. Prometheus itself has support for multiple mechanisms such as DNS, Kubernetes, EC2, file based config, etc in order to discover all the kdb+ instances within your environment.
-2. You may need to extend this script to provide more relevant metrics for your environment. Please consider contributing if your change may be generic enough to have a wider user benefit
-3. General machine/kubernetes/cloud metrics on which kdb+ is running. Metrics can be gathered by such exporters as the node exporter. Metrics from multiple exporters can be correlated together to provide a bigger picture of your environment conditions.
-
-### Example Use Cases
-
-The following are some potential use cases for the interface, this is by no means an exhaustive list. 
-
-- Effects from version upgrades (e.g. performance before/after changes)
-- Alerts when your license may be due to expire
-- Bad use of symbol types within an instance
-- Instances upon which garbage collection may be beneficial on long running processes
+This interface is part of the [_Fusion for kdb+_](https://code.kx.com/v2/interfaces/fusion/) project.
 
 ## New to kdb+ ?
 
-kdb+ is the worlds fastest time-series database. Kdb+ is optimized for ingesting, analyzing, and storing massive amounts of structured data.
-To access the free editions of kdb+, please visit https://code.kx.com/q/learn/ for downloads and developer information. For general information, visit https://kx.com/
+Kdb+ is the world's fastest time-series database, optimized for ingesting, analyzing and storing massive amounts of structured data. To get started with kdb+, please visit https://code.kx.com/q/learn/ for downloads and developer information. For general information, visit https://kx.com/
+
+## What is Prometheus ?
+
+Prometheus is an open source monitoring solution which facilitates metrics gathering, querying and alerting for a wealth of different 3rd party languages and applications. It also provides integration with Kubernetes for automatic discovery of supported applications.
+
+Visualization and querying can be done through the Prometheus built in expression browser, or more commonly via Grafana. An example of this using docker is provided with this interface.
 
 ## Quick Start
 
@@ -45,7 +30,7 @@ Once running, you can use your web browser to view the currently exposed statist
 
 ## Example
 
-The demonstration provided with this interface is outlined in full [here](https://code.kx.com/q/interfaces/prom/exporter/#example-demonstration). For the purposes of this document the following is a summary.
+The demonstration provided with this interface is outlined in full [here](https://code.kx.com/q/interfaces/prom/exporter/examples). For the purposes of this document the following is a summary.
 
 ### Requirements
 This demonstration requires a Docker instance capable of running a Unix based container e.g. Docker Desktop for Mac/Linux/Windows 19 Pro with internet access
@@ -115,6 +100,10 @@ Once logged in a pre-configured dashboard named kdb+ should be available from th
 The following is an example of a generated dashboard from the above workflow
 
 ![Grafana](grafana.png)
+
+## Unsupported Functionality
+
+* This interface does not provide service discovery. Prometheus itself has support for multiple mechanisms such as DNS, Kubernetes, EC2, file based config, etc in order to discover all the kdb+ instances within your environment.
 
 ## Documentation
 
