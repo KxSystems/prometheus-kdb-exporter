@@ -32,6 +32,7 @@ Once running, you can use your web browser to view the currently exposed statist
 
 * This interface does not provide service discovery. Prometheus itself has support for multiple mechanisms such as DNS, Kubernetes, EC2, file based config, etc in order to discover all the kdb+ instances within your environment.
 
+
 ## Documentation
 
 Extensive documentation for this interface is available on the code.kx.com website [here](https://code.kx.com/q/interfaces/fusion/prom/exporter).
