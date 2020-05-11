@@ -1,0 +1,27 @@
+language: c
+os:
+- linux
+- osx
+- windows
+git:
+  depth: 1
+
+script:
+- echo "Preparing version $TRAVIS_BRANCH-$TRAVIS_COMMIT"
+if os = linux or os = osx
+	- tar -zcvf prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz README.md *.q example/ 
+else
+	- 7z a -r prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip README.md *.q example\
+fi
+
+- echo "Packaged as prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip"
+
+deploy:
+  provider: releases
+  api_key: "$GITHUB_APIKEY"
+  file_glob: true
+  file: $TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz
+  skip_cleanup: true
+  on:
+    tags: true
+
