@@ -39,7 +39,7 @@ Extensive documentation for this interface is available on the code.kx.com websi
 
 ## Status
 
-The prometheus-kdb-exporter interface is still in developement and is provided here as a beta release under an Apache 2.0 license.
+The prometheus-kdb-exporter interface is provided here under an Apache 2.0 license.
 
 If you find issues with the interface or have feature requests please consider raising an issue [here](https://github.com/KxSystems/prometheus-kdb-exporter/issues). 
 
