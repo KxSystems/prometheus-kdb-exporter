@@ -9,7 +9,7 @@ git:
 script:
 - echo "Preparing version $TRAVIS_BRANCH-$TRAVIS_COMMIT"
 - if [ $TRAVIS_OS_NAME = windows ]; then
-    7z a prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip README.md *.q example\;
+    7z a -tzip prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip README.md *.q example\;
   else
     tar -zcvf prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz README.md *.q example/;
   fi
