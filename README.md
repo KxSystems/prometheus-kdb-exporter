@@ -35,7 +35,7 @@ Once running, you can use your web browser to view the currently exposed statist
 
 ## Documentation
 
-Extensive documentation for this interface is available on the code.kx.com website [here](https://code.kx.com/q/interfaces/fusion/prom/exporter).
+Extensive documentation for this interface is available on the code.kx.com website [here](https://code.kx.com/q/interfaces/prom/exporter/).
 
 ## Status
 
