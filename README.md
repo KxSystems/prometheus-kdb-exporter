@@ -1,6 +1,6 @@
 # Prometheus Exporter for kdb+
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/kxsystems/prometheus-kdb-exporter)](https://github.com/kxsystems/prometheus-kdb-exporter/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/kxsystems/prometheus-kdb-exporter?include_prereleases)](https://github.com/kxsystems/prometheus-kdb-exporter/releases)
 
 ## Introduction
 
