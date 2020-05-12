@@ -11,7 +11,7 @@ jobs:
     - stage: build Release
       os: linux
       script:
-        tar -zcvf prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz README.md *.q example/
+        tar -zcvf prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz LICENSE README.md *.q example/
       deploy:
         provider: releases
         api_key: "$GITHUB_APIKEY"
@@ -24,7 +24,7 @@ jobs:
     - stage: build Release
       os: osx
       script:
-        tar -zcvf prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz README.md *.q example/
+        tar -zcvf prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz LICENSE README.md *.q example/
       deploy:
         provider: releases
         api_key: "$GITHUB_APIKEY"
@@ -37,7 +37,7 @@ jobs:
     - stage: build Release
       os: windows
       script:
-        7z a -tzip prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip README.md *.q example
+        7z a -tzip prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip LICENSE README.md *.q example
       deploy:
         provider: releases
         api_key: "$GITHUB_APIKEY"
