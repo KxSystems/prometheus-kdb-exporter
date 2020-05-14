@@ -1,47 +1,37 @@
-os: linux
+os: 
+  - linux
+  - osx
+  - windows
 language: c
 compiler: gcc
 
-stage:
-  - build Release
+before_install:
+  - export FILE_ROOT="prometheus-exporter"
+  - export BUILD="False"
+  - if [[ $BUILD == "True" ]]; then
+      export LIB="lib";
+    else
+      export LIB="";
+    fi
+  - if [[ $TRAVIS_OS_NAME = windows ]]; then
+      export FILE_TAIL="zip";
+    else
+      export FILE_TAIL="tgz";
+    fi
+  - export FILE_NAME=$FILE_ROOT-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.$FILE_TAIL
 
-jobs:
-  include:
-    # LINUX BUILD
-    - stage: build Release
-      os: linux
-      script:
-        tar -zcvf prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz README.md *.q example/
-      deploy:
-        provider: releases
-        api_key: "$GITHUB_APIKEY"
-        file: prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz
-        on:
-          tags: true
-        skip_cleanup: 'true'
+script:
+  - if [ $TRAVIS_OS_NAME = windows ]; then
+      7z a -tzip $FILE_NAME README.md q LICENSE examples $LIB;
+    else
+      tar  -zcvf $FILE_NAME README.md q LICENSE examples $LIB;
+    fi
 
-    # OSX BUILD
-    - stage: build Release
-      os: osx
-      script:
-        tar -zcvf prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz README.md *.q example/
-      deploy:
-        provider: releases
-        api_key: "$GITHUB_APIKEY"
-        file: prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.tgz
-        on:
-          tags: true
-        skip_cleanup: 'true'
+deploy:
+  provider: releases
+  api_key: $GITHUB_APIKEY
+  file: $FILE_NAME
+  on:
+    tags: true
+  skip_cleanup: 'true'
 
-    # WINDOWS BUILD
-    - stage: build Release
-      os: windows
-      script:
-        7z a -tzip prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip README.md *.q example
-      deploy:
-        provider: releases
-        api_key: "$GITHUB_APIKEY"
-        file: prom-exporter-$TRAVIS_OS_NAME-$TRAVIS_BRANCH.zip
-        on:
-          tags: true
-        skip_cleanup: 'true'
