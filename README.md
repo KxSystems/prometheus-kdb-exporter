@@ -1,6 +1,6 @@
 # Prometheus Exporter for kdb+
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/kxsystems/prometheus-kdb-exporter)](https://github.com/kxsystems/prometheus-kdb-exporter/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/kxsystems/prometheus-kdb-exporter?include_prereleases)](https://github.com/kxsystems/prometheus-kdb-exporter/releases)
 
 ## Introduction
 
@@ -35,7 +35,7 @@ Once running, you can use your web browser to view the currently exposed statist
 
 ## Documentation
 
-Extensive documentation for this interface is available on the code.kx.com website [here](https://code.kx.com/q/interfaces/fusion/prom/exporter).
+Extensive documentation for this interface is available on the code.kx.com website [here](https://code.kx.com/q/interfaces/prom/exporter/).
 
 ## Status
 
