@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This interface provides a method by which to expose metrics from a kdb+ process or multiple processes to Prometheus for monitoring. This is done via the script `exporter.q` which exposes kdb+ process metrics which can be consumed by Prometheus.
+This interface provides a method by which to expose metrics from a kdb+ process or multiple processes to Prometheus for monitoring. This is done via the script `q/exporter.q` which exposes kdb+ process metrics which can be consumed by Prometheus.
 
 This interface is part of the [_Fusion for kdb+_](https://code.kx.com/v2/interfaces/fusion/) project.
 
@@ -23,7 +23,7 @@ Visualization and querying can be done through the Prometheus built in expressio
 Run kdb+ with the supplied q script. This script will expose metrics on port 8080 which can be monitored by Prometheus
 
 ```
-q exporter.q -p 8080
+q q/exporter.q -p 8080
 ```
 
 Once running, you can use your web browser to view the currently exposed statistics on the metrics URL e.g. http://localhost:8080/metrics. The metrics exposed will be the metric values at the time at which the URL is requested.

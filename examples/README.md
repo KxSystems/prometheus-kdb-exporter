@@ -10,7 +10,7 @@ This demonstration requires a Docker instance capable of running a Unix based co
 Start a q session locally on port 8080, running `exporter.q` from this folder via the command
 
 ```bash
-q ../exporter.q -p 8080
+q ../q/exporter.q -p 8080
 ```
 
 This will expose the metrics associated with this process on port 8080 for consumption by Prometheus.
