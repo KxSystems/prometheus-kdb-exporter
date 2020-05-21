@@ -20,6 +20,16 @@ Visualization and querying can be done through the Prometheus built in expressio
 
 ## Quick Start
 
+Install the appropriate q scripts to `$QHOME`/`%QHOME%` as appropriate using the `install.sh`/`install.bat` files
+
+```bash
+## Linux/MacOS
+chmod +x install.sh && ./install.sh
+
+## Windows
+install.bat
+```
+
 Run kdb+ with the supplied q script. This script will expose metrics on port 8080 which can be monitored by Prometheus
 
 ```
