@@ -1,6 +1,6 @@
 # Prometheus Exporter for kdb+
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/kxsystems/prometheus-kdb-exporter)](https://github.com/kxsystems/prometheus-kdb-exporter/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/kxsystems/prometheus-kdb-exporter?include_prereleases)](https://github.com/kxsystems/prometheus-kdb-exporter/releases)
 
 ## Introduction
 
@@ -20,6 +20,16 @@ Visualization and querying can be done through the Prometheus built in expressio
 
 ## Quick Start
 
+Install the appropriate q scripts to `$QHOME`/`%QHOME%` as appropriate using the `install.sh`/`install.bat` files
+
+```bash
+## Linux/MacOS
+chmod +x install.sh && ./install.sh
+
+## Windows
+install.bat
+```
+
 Run kdb+ with the supplied q script. This script will expose metrics on port 8080 which can be monitored by Prometheus
 
 ```
@@ -35,7 +45,7 @@ Once running, you can use your web browser to view the currently exposed statist
 
 ## Documentation
 
-Extensive documentation for this interface is available on the code.kx.com website [here](https://code.kx.com/q/interfaces/fusion/prom/exporter).
+Extensive documentation for this interface is available on the code.kx.com website [here](https://code.kx.com/q/interfaces/prom/exporter/).
 
 ## Status
 
