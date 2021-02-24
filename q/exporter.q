@@ -111,7 +111,7 @@ before:{[met;msg]
   .z.p}
 after:{[met;tmp;msg;res]
   .prom.updval[value`$"err_",met;-;1];
-  tm:(10e-9)*.z.p-tmp;
+  tm:(10e-10)*.z.p-tmp;
   .prom.updval[value`$"summ_",met;,;tm];
   .prom.updval[value`$"hist_",met;,;tm];}
 .prom.before_pg:before"sync"
