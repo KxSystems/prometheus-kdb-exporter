@@ -29,12 +29,14 @@ summary:{[d]
   hdr:", "sv/:labelhdr,/:(();()),enlist each"quantile=",/:wrapstring each string q;
   hdr:(("_sum";"_count"),count[q]#enlist""),'wraplabels each hdr;
   hdr,'" ",'string svals}
+
 histogram:{[d]
-  svals:raze(sum d`val;count d`val;deltas 1+asc[d`val]bin q:d`params);
+  svals:raze(sum d`val;count d`val;1+asc[d`val]bin q:asc d`params);
   labelhdr:$[count d`labelhdr;enlist d`labelhdr;()];
-  hdr:", "sv/:labelhdr,/:(();()),enlist each"le=",/:wrapstring each string q;
-  hdr:(("_sum";"_count"),count[q]#enlist""),'wraplabels each hdr;
-  hdr,'" ",'string svals}
+  hdr:", "sv/:labelhdr,/:(();()),enlist each"le=",/:wrapstring each string[q],enlist "+Inf";
+  hdr:(("_sum";"_count"),(1+count[q])#enlist""),'wraplabels each hdr;
+  hdr,'" ",'string svals,svals[1]
+ };
 
 // extract metric info
 extractall:{[]
