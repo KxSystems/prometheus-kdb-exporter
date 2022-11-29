@@ -1,10 +1,6 @@
 matrix:
   include:
-  - dist: xenial
-    os: linux
-  - dist: trusty 
-    os: linux
-  - dist: bionic
+  - dist: focal
     os: linux
   - os: osx
   - os: windows
@@ -94,5 +90,5 @@ deploy:
   file: "$FILE_NAME"
   on:
     tags: true
-    condition: $TRAVIS_OS_NAME = windows || $TRAVIS_OS_NAME = osx || ($TRAVIS_DIST = trusty && $TRAVIS_OS_NAME = linux) 
+    condition: $TRAVIS_OS_NAME = windows || $TRAVIS_OS_NAME = osx || ($TRAVIS_DIST = focal && $TRAVIS_OS_NAME = linux) 
   skip_cleanup: 'true'
