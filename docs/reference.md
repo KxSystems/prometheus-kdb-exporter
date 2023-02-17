@@ -1,43 +1,36 @@
----
-title: Function reference for the Prometheus Exporter | Interfaces | Documentation for kdb+ and q
-author: Conor McCarthy
-description: All functionality and options for the Prometheus Exporter for kdb+ metrics
-date: April 2020
-keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualization, q
----
 # Prometheus function reference
 
-:fontawesome-brands-github:
-[KxSystems/prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)
 
-<div markdown="1" class="typewriter">
-.prom   **Prometheus Exporter interface**
+`.prom`   **Prometheus Exporter interface**
 
-Create metrics
-  [addmetric](#promaddmetric)         Create a metric instance
-  [newmetric](#promnewmetric)         Define a new metric class
+Create metrics<br>
+[`addmetric`](#promaddmetric)         Create a metric instance<br>
+[`newmetric`](#promnewmetric)         Define a new metric class
 
-Update metric values
-  [updval](#promupdval)            Update a metric value
+Update metric values<br>
+[`updval`](#promupdval)            Update a metric value
 
-Initialize library
-  [init](#prominit)              Initialize the library
-</div>
+Initialize library<br>
+[`init`](#prominit)              Initialize the library
 
-Once the relevant event handlers have been defined to update the metric values, the library can by initialized with a call to `.prom.init`.
 
-:fontawesome-regular-hand-point-right:
+Once the relevant event handlers have been defined to update the metric values, initialize the library with a call to `.prom.init`.
+
+:point_right:
 [Modify the behavior of event handlers that control the logic of metric updates](event-handlers.md)
 
 
-
+---
 
 
 ## `.prom.addmetric`
 
 _Create a metric instance_
 
-Syntax: `.prom.addmetric[metric;labelvals;params;startval]`
+```txt
+.prom.addmetric[metric;labelvals;params;startval]
+```
+
 
 Where
 
@@ -65,7 +58,10 @@ Once created, a metric will automatically be included in each HTTP response to a
 
 _Initialize metric monitoring_
 
-Syntax: `.prom.init[]`
+```txt
+.prom.init[]
+```
+
 
 ```q
 q).prom.init[]
@@ -73,14 +69,17 @@ q).prom.init[]
 
 Updating `.z.*` handlers after the call to `.prom.init` will overwrite the Prometheus logic. 
 
-!!! tip "Load all process logic before loading the Prometheus library."
+> Tip: Load all process logic before loading the Prometheus library.
 
 
 ## `.prom.newmetric`
 
 _Define a metric class_
 
-Syntax: `.prom.newmetric[metric;metrictype;labelnames;helptxt]`
+```txt
+.prom.newmetric[metric;metrictype;labelnames;helptxt]
+```
+
 
 Where
 
@@ -90,10 +89,10 @@ Where
 -   `helptxt` is a string providing the HELP text which is provided with the metric values
 
 ```q
-q)// Tables
+// Tables
 q).prom.newmetric[`number_tables;`gauge;`region;"number of tables"]
 
-q)// Updates
+// Updates
 q).prom.newmetric[`size_updates;`summary;();"size of updates"]
 ```
 
@@ -102,7 +101,10 @@ q).prom.newmetric[`size_updates;`summary;();"size of updates"]
 
 _Update a metric value_
 
-Syntax: `.prom.updval[name;func;arg]`
+```txt
+.prom.updval[name;func;arg]
+```
+
 
 Where
 
@@ -115,12 +117,12 @@ When updating a single-value metric (`counter` or `gauge`), the value will typic
 When updating a sample metric (`histogram` or `summary`), a list of numeric values will typically be appended to. This list will be aggregated to provide statistics to Prometheus according to the metric type and parameters provided.
 
 ```q
-q)// Tables
+// Tables
 q).prom.updval[`numtab1;:;count tables[]] // set
 q).prom.updval[`numtab2;+;1]              // increment
 q).prom.updval[`numtab3;-;1]              // decrement
 
-q)// Updates
+// Updates
 q).prom.updval[`updsz;,;10 15 20f]        // append
 ```
 

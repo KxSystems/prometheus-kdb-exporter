@@ -1,10 +1,3 @@
----
-title: Example usage | Prometheus Exporter | Interfaces | q and kdb+ documentation
-author: Conor McCarthy
-description: Minimal examples showing the use of the Prometheus kdb interface
-date: March 2020
-keywords: Prometheus, Grafana, kdb+, examples, metrics, monitoring, 
----
 # Example usage of Prometheus Exporter interface
 
 
@@ -15,12 +8,12 @@ This is intended as a simple and quick way to run an environment to demonstrate 
 
 ## Requirements
 
-This demonstration requires a Docker instance capable of running Unix based containers e.g. Docker Desktop for Mac, Linux, Windows 10 Pro (or above), with Internet access.
+This demonstration requires a Docker instance capable of running Unix-based containers e.g. Docker Desktop for Mac, Linux, Windows 10 Pro (or above), with Internet access.
 
 
 ## Setup
 
-Ensure you have installed the q scripts to `$QHOME`/`%QHOME%` (as appropriate) following the [instructions](https://github.com/KxSystems/prometheus-kdb-exporter#quick-start).
+Ensure you have installed the q scripts to `$QHOME`/`%QHOME%` (as appropriate) following the [instructions](../README.md#quick-start).
 
 Run kdb+ with the supplied `exporter.q` on the host upon which Docker is initialized. This will expose metrics over HTTP that will be gathered by Prometheus configured in the supplied demo.
 
@@ -30,12 +23,12 @@ From the `examples` folder the following will expose the metrics on port 8080.
 q ../q/exporter.q -p 8080
 ```
 
-Next we are required to initialize a Docker environment containing a single Prometheus instance and a Grafana dashboard. This accesses the kdb+ exporter from the local machine at port 8080. If you wish to use it for multiple targets or service discovery, refer to the Prometheus documentation.
+Next we initialize a Docker environment containing a single Prometheus instance and a Grafana dashboard. This accesses the kdb+ exporter from the local machine at port 8080. To use it for multiple targets or service discovery, refer to the Prometheus documentation.
 
 Initializing the Docker environment varies between Windows, macOS and Linux.
 
 
-### Windows and macOS &nbsp; :fontawesome-brands-windows: &nbsp; :fontawesome-brands-apple:
+### Windows and macOS 
 
 To run Prometheus and Grafana, enter the supplied `DockerCompose` directory and run
 
@@ -52,7 +45,7 @@ docker-compose-down
 ```
 
 
-### Linux &nbsp; :fontawesome-brands-linux: 
+### Linux 
 
 As above, but run
 
@@ -74,7 +67,7 @@ These are defaulted as follows.
 -   The Prometheus expression browser should be running on port 9090, e.g. `http://localhost:9090`
 -   Grafana should be running on port 3000 e.g. `http://localhost:3000`
 
-!!! note "For the Grafana dashboard use `admin` and `pass` as the username and password respectively"
+> For the Grafana dashboard use `admin` and `pass` as the username and password respectively
 
 While in the Prometheus front-end, you can try executing a basic expression such as `up` for the current status of monitored exporters. A `1` value should appear for your configured kdb+ instance/s to indicate Prometheus can reach the provided host, and that it sees kdb+ is running.
 
@@ -86,7 +79,7 @@ Files contained with the `grafana-config` directory contain the defaults used fo
 
 Example generated dashboard using the exposed metric data:
 
-![Grafana_dash](../../img/grafana_kdb_example.png)
+![Grafana_dash](grafana_kdb_example.png)
 
 
 ## Example: resource utilization

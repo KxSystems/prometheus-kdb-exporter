@@ -1,13 +1,4 @@
----
-title: Prometheus Exporter | Interfaces | Documentation for kdb+ and q
-description: Prometheus Exporter for kdb+ metrics 
-keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualization, q
----
-# ![Prometheus](../../img/prometheus.png) Prometheus Exporter
-
-:fontawesome-brands-github:
-[KxSystems/prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)
-
+# ![Prometheus](../prometheus.png) Prometheus Exporter
 
 
 [Prometheus](https://prometheus.io/docs/instrumenting/exporters/) is free software which facilitates metric gathering, querying and alerting for a wealth of different third-party languages and applications. It also provides integration with Kubernetes for automatic discovery of supported applications.
@@ -19,7 +10,7 @@ An environment being administered or analyzed by Prometheus can include current 
 
 ## Use-cases
 
-The following are potential use cases for the interface, this is by no means an exhaustive list
+The following are potential use cases for the interface. This is by no means an exhaustive list.
 
 -   effects from version upgrades (e.g. performance before/after changes)
 -   alerts when your that a licence may be due to expire
@@ -55,24 +46,24 @@ summary
 
 These are classified as either _Single-value_ or _Sample_ metrics
 
-Single-value metrics
+-   Single-value metrics
 
-: Both `counter` and `gauge` are single-value metrics, providing a number per instance.
+    Both `counter` and `gauge` are single-value metrics, providing a number per instance.
 
-: When updating a single-value metric, a single number will be modified. On a request, this number will be reported directly as the metric value.
+    When updating a single-value metric, a single number will be modified. On a request, this number will be reported directly as the metric value.
 
-Sample metrics
+-   Sample metrics
 
-: Both `histogram` and `summary` are aggregate metrics, providing summary statistics (defined by the metric params) per instance.
+    Both `histogram` and `summary` are aggregate metrics, providing summary statistics (defined by the metric params) per instance.
 
-: When updating a sample metric, a list of numeric values will be appended to. On request, this list will be used to construct the metric values, depending on the metric type and params.
+    When updating a sample metric, a list of numeric values will be appended to. On request, this list will be used to construct the metric values, depending on the metric type and params.
 
 ## Status
 
 The interface is currently available under an Apache 2.0 licence and is supported on a best-efforts basis by the Fusion team. The interface is currently in active development, with additional functionality to be released on an ongoing basis.
 
-:fontawesome-brands-github: 
-[Issues and feature requests](https://github.com/KxSystems/prometheus-kdb-exporter/issues) 
 
-:fontawesome-brands-github: 
-[Guide to contributing](https://github.com/KxSystems/prometheus-kdb-exporter/blob/master/CONTRIBUTING.md)
+[Issues and feature requests](../../../issues) 
+
+[Guide to contributing](../CONTRIBUTING.md)
+
