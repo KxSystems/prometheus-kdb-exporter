@@ -1,6 +1,6 @@
 # kdb+ interface for Prometheus-Exporter – example
 
-The demonstration below is described in full [here](docs/examples.md). 
+The demonstration below is described in full [here](../docs/examples.md). 
 For clarity, the following is a summary.
 
 ## Requirements
