@@ -42,12 +42,12 @@ Where
 returns identifier/s for the metric, to be used in future updates.
 
 ```q
-q)// Tables
+// Tables
 q)numtab1:.prom.addmetric[`number_tables;`amer;();0f]
 q)numtab2:.prom.addmetric[`number_tables;`emea;();0f]
 q)numtab3:.prom.addmetric[`number_tables;`apac;();0f]
 
-q)// Updates
+// Updates
 q)updsz:.prom.addmetric[`size_updates;();0.25 0.5 0.75;`float$()]
 ```
 

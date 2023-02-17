@@ -8,7 +8,7 @@ Visualization and querying can be done through its built-in expression browser o
 An environment being administered or analyzed by Prometheus can include current and past metrics exposed by kdb+.
 
 
-## Use-cases
+## Use cases
 
 The following are potential use cases for the interface. This is by no means an exhaustive list.
 
