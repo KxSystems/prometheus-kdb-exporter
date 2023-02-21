@@ -17,7 +17,7 @@ Kdb+ is the world's fastest time-series database, optimized for ingesting, analy
 Prometheus is an open source monitoring solution which facilitates metrics gathering, querying and alerting for a wealth of different 3rd-party languages and applications. It also provides integration with Kubernetes for automatic discovery of supported applications.
 
 Visualization and querying can be done through the Prometheus built in expression browser, or more commonly via Grafana. 
-The repo includes [an example](example) of this using Docker.
+The repo includes [an example](examples) of this using Docker.
 
 ## Quick start
 
