@@ -1,0 +1,75 @@
+name: Cross-platform Build and Release
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize, reopened]
+  release:
+    types: [created]
+
+jobs:
+  build:
+    if: ${{ github.repository == 'KxSystems/prometheus-kdb-exporter' }}
+    name: Build
+    runs-on: ubuntu-slim
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v5
+
+      - name: Create artifacts
+        run: |
+          mkdir artifacts &&
+          tar  -zcvf artifacts/prometheus-exporter-linux.tgz README.md install.sh LICENSE q examples docs &&
+          tar  -zcvf artifacts/prometheus-exporter-macos.tgz README.md install.sh LICENSE q examples docs &&
+          zip -r artifacts/prometheus-exporter-windows.zip README.md install.bat LICENSE q examples docs
+ 
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: prometheus_artifacts
+          path: artifacts/
+          retention-days: 1
+
+  release:
+    name: Upload release assets
+    if: github.event_name == 'release'
+    runs-on: ubuntu-slim
+    needs: build
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: "*"
+          path: artifacts
+
+      - name: Rename files to include release tag
+        shell: bash
+        run: |
+          mkdir -p release-files
+          TAG="${GITHUB_REF_NAME}"
+          find artifacts -type f | while read -r file; do
+            base="$(basename "$file")"
+            ext="${base##*.}"
+            name="${base%.*}"
+
+            if [[ "$base" == "$ext" ]]; then
+              # no extension
+              new_name="${name}-${TAG}"
+            else
+              new_name="${name}-${TAG}.${ext}"
+            fi
+
+            cp "$file" "release-files/$new_name"
+          done
+          ls -la release-files
+
+      - name: Upload assets to GitHub Release
+        uses: softprops/action-gh-release@v2.6.1
+        with:
+          files: release-files/*
