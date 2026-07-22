@@ -51,8 +51,8 @@ infovals:string[(.z.k;.z.K;.z.o;.z.c)],enlist .z.l 1
 info      :.prom.addmetric[`kdb_info;infovals;();1f]
 mem       :.prom.addmetric[`memory_usage_bytes;();();0f]
 mem_heap  :.prom.addmetric[`memory_heap_bytes;();();0f]
-mem_lim   :.prom.addmetric[`memory_heap_peak_bytes;();();0f]
-mem_max   :.prom.addmetric[`memory_heap_limit_bytes;();();0f]
+mem_peak  :.prom.addmetric[`memory_heap_peak_bytes;();();0f]
+mem_wmax  :.prom.addmetric[`memory_heap_limit_bytes;();();0f]
 mem_map   :.prom.addmetric[`memory_mapped_bytes;();();0f]
 mem_phys  :.prom.addmetric[`memory_physical_bytes;();();0f]
 sym_num   :.prom.addmetric[`kdb_syms_total;();();0f]
@@ -88,7 +88,7 @@ hist_ws   :.prom.addmetric[`kdb_ws_histogram_seconds;();.25 .5 1 5 10;0#0f]
 hist_ts   :.prom.addmetric[`kdb_ts_histogram_seconds;();.25 .5 1 5 10;0#0f]
 
 // memory metrics (.Q.w[])
-memmetrics:value each`mem`mem_heap`mem_lim`mem_max`mem_map`mem_phys`sym_num`sym_mem
+memmetrics:value each`mem`mem_heap`mem_peak`mem_wmax`mem_map`mem_phys`sym_num`sym_mem
 
 // define logic to run in event handlers
 .prom.on_poll:{[msg].prom.updval[;:;]'[memmetrics;value"f"$.Q.w[]];}
