@@ -89,7 +89,7 @@ ph:{[f;msg]$["metrics"~msg 0;
   [tmp:before_ph msg;res:f msg;after_ph[tmp;msg;res];res]
  ]}
 pp:{[f;msg]tmp:before_pp msg;res:f msg;after_pp[tmp;msg;res];res}
-ws:{[f;msg]tmp:before_ws msg;res:f msg;after_ws[tmp;msg;res];}
+ws:{[f;msg]tmp:before_ws msg;res:f msg;after_ws[tmp;msg;res];res}
 ts:{[f;dtm]tmp:before_ts dtm;res:f dtm;after_ts[tmp;dtm;res];}
 
 // overload existing event handlers
