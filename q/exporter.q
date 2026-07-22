@@ -11,7 +11,7 @@ infovals:string[(.z.k;.z.K;.z.o;.z.c)],enlist .z.l 1
 .prom.newmetric[`kdb_info;`gauge;infokeys;"process information"]
 .prom.newmetric[`memory_usage_bytes;`gauge;();"memory allocated"]
 .prom.newmetric[`memory_heap_bytes;`gauge;();"memory available in the heap"]
-.prom.newmetric[`memory_heap_peak_bytes;`counter;();"maximum heap size so far"]
+.prom.newmetric[`memory_heap_peak_bytes;`gauge;();"maximum heap size so far"]
 .prom.newmetric[`memory_heap_limit_bytes;`gauge;();"limit on thread heap size"]
 .prom.newmetric[`memory_mapped_bytes;`gauge;();"mapped memory"]
 .prom.newmetric[`memory_physical_bytes;`gauge;();"physical memory available"]
