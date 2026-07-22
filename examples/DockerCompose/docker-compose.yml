@@ -4,6 +4,8 @@ services:
 
     prometheus:
         image: prom/prometheus:v2.15.1
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
         volumes:
             - ./prometheus.yml:/etc/prometheus/prometheus.yml
         ports:
