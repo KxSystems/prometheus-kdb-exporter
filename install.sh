@@ -54,9 +54,11 @@ if [ ! -w "$Q_SCRIPT_DIR" ]; then
     echo "ERROR: Directory '$Q_SCRIPT_DIR' does not exist"
     exit 1
 fi
-if [ ! -w "$Q_SHARED_LIB_DIR" ]; then
+if [ -d lib ]; then
+  if [ ! -d "$Q_SHARED_LIB_DIR" ]; then
     echo "ERROR: Directory '$Q_SHARED_LIB_DIR' does not exist"
     exit 1
+  fi
 fi
 
 if [ -d q ]; then
