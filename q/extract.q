@@ -45,7 +45,7 @@ extractall:{[]
   "\n"sv raze extractmetric each 0!metrics}
 extractmetric:{[d]
   vals:extractmetricval[d`metrictype]each 0!select from metricvals where metric=d`metric;
-  first[d`hdr],raze vals} 
+  d[`hdr],raze vals} 
 extractmetricval:{[typ;d]
   $[typ=`summary;
      string[d`metric],/:summary d;
