@@ -13,7 +13,7 @@ jobs:
   build:
     if: ${{ github.repository == 'KxSystems/prometheus-kdb-exporter' }}
     name: Build
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check out code
@@ -36,7 +36,7 @@ jobs:
   release:
     name: Upload release assets
     if: github.event_name == 'release'
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     needs: build
     permissions:
       contents: write
