@@ -47,7 +47,7 @@ else
 fi
 
 Q_SCRIPT_DIR=${QHOME}${Q_PATH_SEP}
-Q_SHARED_LIB_DIR="${QHOME}${Q_PATH_SEP}${Q_HOST_TYPE}${Q_SHARED_LIB_DIR}${Q_MACH_TYPE}${Q_PATH_SEP}"
+Q_SHARED_LIB_DIR="${QHOME}${Q_PATH_SEP}${Q_HOST_TYPE}${Q_MACH_TYPE}${Q_PATH_SEP}"
 
 # check destination directory exists
 if [ ! -d "$Q_SCRIPT_DIR" ]; then
