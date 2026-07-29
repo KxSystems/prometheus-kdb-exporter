@@ -24,7 +24,7 @@ addmetric:{[metric;labelvals;params;startval]
 getval:{[d]enlist wraplabels[d`labelhdr]," ",string d`val}
 quantile:{[q;x]r[0]+(p-i 0)*last r:0^deltas asc[x]i:0 1+\:floor p:q*-1+count x}
 summary:{[d]
-  svals:raze(sum;count;quantile q:d`params)@\:d`val;
+  svals:raze(sum;count;quantile q:d`params)@\:asc d`val;
   labelhdr:$[count d`labelhdr;enlist d`labelhdr;()];
   hdr:", "sv/:labelhdr,/:(();()),enlist each"quantile=",/:wrapstring each string q;
   hdr:(("_sum";"_count"),count[q]#enlist""),'wraplabels each hdr;
@@ -40,8 +40,6 @@ histogram:{[d]
 
 // extract metric info
 extractall:{[]
-  aggmetrics:exec metric from metrics where metrictype in`summary`histogram;
-  metricvals,:select name,asc each val from metricvals where metric in aggmetrics;
   "\n"sv raze extractmetric each 0!metrics}
 extractmetric:{[d]
   vals:extractmetricval[d`metrictype]each 0!select from metricvals where metric=d`metric;
