@@ -45,7 +45,7 @@ extractall:{[]
   "\n"sv raze extractmetric each 0!metrics}
 extractmetric:{[d]
   vals:extractmetricval[d`metrictype]each 0!select from metricvals where metric=d`metric;
-  first[d`hdr],raze vals} 
+  d[`hdr],raze vals} 
 extractmetricval:{[typ;d]
   $[typ=`summary;
      string[d`metric],/:summary d;
@@ -84,7 +84,7 @@ wo:{[f;hdl]on_wo hdl;f hdl}
 wc:{[f;hdl]on_wc hdl;f hdl}
 pg:{[f;msg]tmp:before_pg msg;res:f msg;after_pg[tmp;msg;res];res}
 ps:{[f;msg]tmp:before_ps msg;res:f msg;after_ps[tmp;msg;res];}
-ph:{[f;msg]$["metrics"~msg 0;
+ph:{[f;msg]$["/metrics"~8#msg 0;
   [on_poll[msg];.h.hy[`txt]extractall[]];
   [tmp:before_ph msg;res:f msg;after_ph[tmp;msg;res];res]
  ]}
